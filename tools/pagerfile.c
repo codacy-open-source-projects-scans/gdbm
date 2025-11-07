@@ -1,5 +1,5 @@
 /* This file is part of GDBM, the GNU data base manager.
-   Copyright (C) 2024 Free Software Foundation, Inc.
+   Copyright (C) 2024-2025 Free Software Foundation, Inc.
 
    GDBM is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -202,5 +202,22 @@ pager_open (FILE *stream, size_t maxlines, char const *pager)
     }
   else
     pfp->mode = mode_transparent;
+  return pfp;
+}
+
+PAGERFILE *
+pager_create (char const *pager)
+{
+  struct pagerfile *pfp;
+  FILE *pagfp = popen (pager, "w");
+  if (!pagfp)
+    {
+      terror (_("cannot run command `%s': %s"), pager, strerror (errno));
+      return NULL;
+    }
+  pfp = ecalloc (1, sizeof (*pfp));
+  pfp->pager = estrdup (pager);
+  pfp->mode = mode_pager;
+  pfp->stream = pagfp;
   return pfp;
 }

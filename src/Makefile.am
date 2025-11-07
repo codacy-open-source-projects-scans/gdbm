@@ -1,5 +1,5 @@
 # This file is part of GDBM.                                   -*- Makefile -*-
-# Copyright (C) 2007-2024 Free Software Foundation, Inc.
+# Copyright (C) 2007-2025 Free Software Foundation, Inc.
 #
 # GDBM is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ VI_REVISION = 0
 VI_AGE      = 0
 
 lib_LTLIBRARIES = libgdbm.la
-libgdbm_la_LIBADD = @LTLIBINTL@
+libgdbm_la_LIBADD = @LTLIBINTL@ @LTRT@
 
 libgdbm_la_SOURCES = \
  gdbmclose.c\

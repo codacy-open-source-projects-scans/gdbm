@@ -1,10 +1,23 @@
-GNU dbm NEWS -- history of user-visible changes. 2024-08-12
-Copyright (C) 1990-2024 Free Software Foundation, Inc.
+GNU dbm NEWS -- history of user-visible changes. 2025-07-30
+Copyright (C) 1990-2025 Free Software Foundation, Inc.
 See the end of file for copying conditions.
 
 Please send gdbm bug reports to <bug-gdbm@gnu.org>.
 
-Version 1.24.90 (git)
+Version 1.26, 2025-07-30
+
+* Fixed build on musl libc
+* Fixed build on MacOS
+* Improved testsuite
+
+Version 1.25, 2025-03-22
+
+* New function: gdbm_open_ext
+
+This function provides a general-purpose interface for opening and
+creating GDBM files.  It combines the possibilities of gdbm_open
+and gdbm_fd_open and provides detailed control over database file
+locking.
 
 * New gdbmtool command: collisions
 
@@ -19,6 +32,15 @@ for the buckets identified by its arguments:
 
   collisions N0 N1
      Display collisions for the range of buckets [N0, N1].
+
+* Pipelines in gdbmtool
+
+The output of a gdbmtool command can be connected to the input of a
+shell command using the traditional pipeline syntax.
+
+* Fix a bug in block coalescing code
+
+* Other bugfixes
 
 
 Version 1.24, 2024-07-02
@@ -723,7 +745,7 @@ Version 0.9
 ----------------------------------------------------------------------
 Copyright information:
 
-Copyright (C) 1990-2021 Free Software Foundation, Inc.
+Copyright (C) 1990-2025 Free Software Foundation, Inc.
 
    Permission is granted to anyone to make or distribute verbatim copies
    of this document as received, in any medium, provided that the

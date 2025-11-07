@@ -1,7 +1,7 @@
 /* falloc.c - The file space management routines for dbm. */
 
 /* This file is part of GDBM, the GNU data base manager.
-   Copyright (C) 1990-2024 Free Software Foundation, Inc.
+   Copyright (C) 1990-2025 Free Software Foundation, Inc.
 
    GDBM is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -248,7 +248,7 @@ pop_avail_block (GDBM_FILE dbf)
   dbf->avail->next_block = new_blk->next_block;
 
   /* We changed the header. */
-  //FIXME: or avail block, when it is separate
+  /* FIXME: or avail block, when it is separate */
   dbf->header_changed = TRUE;
 
   /* Free the previous avail block.   It is possible that the header table
@@ -284,7 +284,7 @@ push_avail_block (GDBM_FILE dbf)
   avail_elem  new_loc;
   int rc;
 
-  /* Caclulate the size of the split block. */
+  /* Calculate the size of the split block. */
   av_size = ( (dbf->avail->size * sizeof (avail_elem)) >> 1)
             + sizeof (avail_block);
 
@@ -437,7 +437,7 @@ _gdbm_put_av_elem (avail_elem new_el, avail_elem av_table[], int *av_count,
       /* Search for blocks to coalesce with this one. */
       int i;
       
-      for (i = 0; i < *av_count; i++)
+      for (i = 0; i < *av_count;)
 	{
 	  if ((av_table[i].av_adr + av_table[i].av_size) == new_el.av_adr)
 	    {
@@ -445,16 +445,15 @@ _gdbm_put_av_elem (avail_elem new_el, avail_elem av_table[], int *av_count,
 	      new_el.av_size += av_table[i].av_size;
 	      new_el.av_adr = av_table[i].av_adr;
 	      avail_move (av_table, av_count, i + 1, i);
-	      --i;
 	    }
-
-	  if ((new_el.av_adr + new_el.av_size) == av_table[i].av_adr)
+          else if ((new_el.av_adr + new_el.av_size) == av_table[i].av_adr)
 	    {
 	      /* Left adjacent */
 	      new_el.av_size += av_table[i].av_size;
 	      avail_move (av_table, av_count, i + 1, i);
-	      --i;
 	    }
+          else
+            i++;
 	}
     }
 

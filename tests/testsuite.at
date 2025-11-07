@@ -1,5 +1,5 @@
 # This file is part of GDBM.                                   -*- autoconf -*-
-# Copyright (C) 2011-2024 Free Software Foundation, Inc.
+# Copyright (C) 2011-2025 Free Software Foundation, Inc.
 #
 # GDBM is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -45,7 +45,13 @@ m4_include([delete02.at])
 
 m4_include([closerr.at])
 
+AT_BANNER([Export and import])
 m4_include([dumpload.at])
+m4_include([emptydatum.at])
+
+AT_BANNER([GDBM locking])
+m4_include([lockwait_ret.at])
+m4_include([lockwait_sig.at])
 
 AT_BANNER([Block size selection])
 m4_include([blocksize00.at])
@@ -88,8 +94,13 @@ m4_include([gdbmtool00.at])
 m4_include([gdbmtool01.at])
 m4_include([gdbmtool02.at])
 m4_include([gdbmtool03.at])
+m4_include([gdbmtool04.at])
 
 AT_BANNER([Database formats])
 m4_include([conv.at])
+
+AT_BANNER([Free space management])
+m4_include([coalesce.at])
+
 
 # End of testsuite.at

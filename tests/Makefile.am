@@ -1,5 +1,5 @@
 # This file is part of GDBM.                                   -*- autoconf -*-
-# Copyright (C) 2011-2024 Free Software Foundation, Inc.
+# Copyright (C) 2011-2025 Free Software Foundation, Inc.
 #
 # GDBM is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -55,6 +55,7 @@ TESTSUITE_AT = \
  cloexec02.at\
  cloexec03.at\
  closerr.at\
+ coalesce.at\
  conv.at\
  dbmcreate00.at\
  dbmdel00.at\
@@ -70,15 +71,19 @@ TESTSUITE_AT = \
  delete00.at\
  delete01.at\
  delete02.at\
+ emptydatum.at\
  gdbmtool00.at\
  gdbmtool01.at\
  gdbmtool02.at\
  gdbmtool03.at\
+ gdbmtool04.at\
  fetch00.at\
  fetch01.at\
  setopt00.at\
  setopt01.at\
  setopt02.at\
+ lockwait_ret.at\
+ lockwait_sig.at\
  version.at\
  wordwrap.at
 
@@ -122,12 +127,14 @@ check_PROGRAMS = \
  gtdel\
  gtdump\
  gtfetch\
+ gtimport\
  gtload\
  gtopt\
  gtrecover\
  gtver\
  num2word\
  t_dumpload\
+ t_lockwait\
  t_wordwrap\
  $(DBMPROGS)
 
@@ -144,4 +151,4 @@ dtdel_LDADD = ../src/libgdbm.la ../compat/libgdbm_compat.la
 d_creat_ce_LDADD = ../src/libgdbm.la ../compat/libgdbm_compat.la
 t_wordwrap_LDADD = ../tools/libgdbmapp.a @LTLIBINTL@
 
-SUBDIRS = gdbmtool
+SUBDIRS = dejagnu

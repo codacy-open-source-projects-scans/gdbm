@@ -1,5 +1,5 @@
 /* This file is part of GDBM, the GNU data base manager.
-   Copyright (C) 2011-2024 Free Software Foundation, Inc.
+   Copyright (C) 2011-2025 Free Software Foundation, Inc.
 
    GDBM is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,6 +16,7 @@
 
 #include <stdlib.h>
 #include <stdarg.h>
+#include <sys/types.h>
 #include "gettext.h"
 #ifdef HAVE_LOCALE_H
 # include <locale.h>

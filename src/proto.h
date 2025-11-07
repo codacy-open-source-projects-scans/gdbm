@@ -1,7 +1,7 @@
 /* proto.h - The prototypes for the dbm routines. */
 
 /* This file is part of GDBM, the GNU data base manager.
-   Copyright (C) 1990-2024 Free Software Foundation, Inc.
+   Copyright (C) 1990-2025 Free Software Foundation, Inc.
 
    GDBM is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -87,8 +87,9 @@ off_t _gdbm_mapped_lseek	(GDBM_FILE, off_t, int);
 int _gdbm_mapped_sync	(GDBM_FILE);
 
 /* From lock.c */
-void _gdbm_unlock_file	(GDBM_FILE);
-int _gdbm_lock_file	(GDBM_FILE);
+void _gdbm_unlock_file	 (GDBM_FILE);
+int _gdbm_lock_file	 (GDBM_FILE, int);
+int _gdbm_lock_file_wait (GDBM_FILE, struct gdbm_open_spec const *);
 
 /* From fullio.c */
 int _gdbm_full_read (GDBM_FILE, void *, size_t);

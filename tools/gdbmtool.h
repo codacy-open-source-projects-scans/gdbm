@@ -1,5 +1,5 @@
 /* This file is part of GDBM, the GNU data base manager.
-   Copyright (C) 1990-2024 Free Software Foundation, Inc.
+   Copyright (C) 1990-2025 Free Software Foundation, Inc.
 
    GDBM is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -274,6 +274,7 @@ struct pagerfile
 
 typedef struct pagerfile PAGERFILE;
 
+PAGERFILE *pager_create (char const *pager);
 PAGERFILE *pager_open (FILE *stream, size_t maxlines, char const *pager);
 void pager_close (struct pagerfile *pfp);
 ssize_t pager_write (struct pagerfile *pfp, const char *buffer, size_t size);
@@ -300,7 +301,7 @@ struct command_environ
 struct command;
 int command_lookup (const char *str, struct locus *loc, struct command **pcmd);
 
-int run_command (struct command *cmd, struct gdbmarglist *arglist);
+int run_command (struct command *cmd, struct gdbmarglist *arglist, char *pipe);
 int run_last_command (void);
 
 struct xdatum;
